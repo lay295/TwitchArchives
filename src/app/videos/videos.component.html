@@ -1,0 +1,48 @@
+<mat-grid-list style="height: calc(100vh - 64px)" cols="8" rowHeight="fit">
+    <mat-grid-tile
+        colspan="6"
+        rowspan="8"
+        >
+        <div class="video-foreground">
+            <iframe *ngIf="Url" id="yt_video" [src]="Url" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile
+        colspan="2"
+        rowspan="8">
+        <div class="video-foreground">
+            <iframe *ngIf="ChatUrl" id="yt_chat" [src]="ChatUrl" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile
+        colspan="4"
+        rowspan="1">
+        <div *ngIf="channel_data">
+            <a routerLink="/channel/{{channel_data.name}}"><img class="avatar" src="{{channel_data.avatar_url}}"></a>
+            <p class="channel_text" style="font-size: large;">{{ video_data.title }}<br>
+                <a href="https://drive.twitcharchives.com/{{channel_data.download_index}}:down/{{video_data.id}}/final.mp4" target="_blank">
+                    <button mat-icon-button>
+                        <mat-icon>cloud_download</mat-icon>
+                        Download
+                    </button>
+                </a>
+            </p>
+        </div>
+        
+    </mat-grid-tile>
+    <mat-grid-tile
+        colspan="2"
+        rowspan="1">
+        <mat-form-field *ngIf="video_list" appearance="fill">
+            <mat-label>Video Part</mat-label>
+            <mat-select [(ngModel)]="selected_option" (selectionChange)="onSelectChange($event)">
+                <mat-option *ngFor="let video of video_list; index as i" [value]="i+1">Part {{ i+1 }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile
+        colspan="2"
+        rowspan="1">
+        <mat-checkbox (change)="checkChanged($event)">Disable Chat Sync</mat-checkbox>
+    </mat-grid-tile>
+</mat-grid-list>

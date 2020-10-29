@@ -1,0 +1,22 @@
+<mat-card class="form-card">
+  <div class="contact-header">
+    Contact Form
+    <img src="https://cdn.betterttv.net/emote/5a5e0e8d80f53146a54a516b/1x">
+  </div>
+  <mat-spinner *ngIf="loading" class="loading-indicator">
+  </mat-spinner>
+    <form *ngIf="!loading" (ngSubmit)="processForm()">
+      <mat-form-field class="field">
+        <input matInput type="text" name="name" class="input" placeholder="Your Name" [(ngModel)]="name">
+      </mat-form-field>
+      <mat-form-field class="field">
+        <input matInput type="email" name="email" class="input" placeholder="Your Email" [(ngModel)]="email">
+      </mat-form-field>
+      <mat-form-field class="field">
+        <textarea rows="6" matInput class="textarea" name="message" placeholder="Message"
+          [(ngModel)]="message"></textarea>
+      </mat-form-field>
+      <button mat-raised-button type="submit" color="primary">Submit</button>
+    </form>
+  
+</mat-card>

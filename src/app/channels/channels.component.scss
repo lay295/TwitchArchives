@@ -1,0 +1,32 @@
+a { 
+    color: inherit;
+    text-decoration: none; 
+}
+
+.loading-indicator {
+    position: fixed;
+    z-index: 999;
+    height: 2em;
+    width: 2em;
+    overflow: show;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.time {
+    position: absolute;
+    bottom: 6px;
+    right: 14px;
+    font-weight: bold;
+    font-size: large;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}

@@ -1,0 +1,12 @@
+<mat-spinner class="loading-indicator" *ngIf="channels.length === 0"></mat-spinner>
+
+<mat-grid-list *ngIf="channels.length > 0" [cols]="breakpoint" (window:resize)="onResize($event)" rowHeight="230px">
+    <mat-grid-tile class="test" *ngFor="let channel of channels">
+        <a routerLink="/channel/{{ channel.name }}">
+            <figure>
+                <img style="height: 180px; width: 180px;" src="{{ channel.avatar_url }}" />
+                <figcaption style="text-align:center"> {{ channel.name }} </figcaption>
+            </figure>
+        </a>
+    </mat-grid-tile>
+</mat-grid-list>

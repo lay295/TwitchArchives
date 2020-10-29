@@ -1,0 +1,28 @@
+.avatar {
+    position: absolute;
+    margin: 0;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+}
+
+.video-foreground iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+a { 
+  color: inherit;
+  text-decoration: none; 
+}
+
+.channel_text {
+  position: absolute;
+    margin: 0;
+    left: 100px;
+    top: 20px;
+    height: 100%;
+}
