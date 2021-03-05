@@ -25,6 +25,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTabsModule } from '@angular/material/tabs';
 import { HomeComponent } from './home/home.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ContactComponent } from './contact/contact.component';
@@ -34,6 +35,8 @@ import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
 import { VideosComponent } from './videos/videos.component';
 import { SafePipe } from './safe.pipe';
 import { DeletedVodsComponent } from './deleted-vods/deleted-vods.component';
+import { GameComponent } from './game/game.component';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +50,8 @@ import { DeletedVodsComponent } from './deleted-vods/deleted-vods.component';
     SidenavListComponent,
     VideosComponent,
     SafePipe,
-    DeletedVodsComponent
+    DeletedVodsComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +75,8 @@ import { DeletedVodsComponent } from './deleted-vods/deleted-vods.component';
     MatSelectModule,
     MatFormFieldModule,
     DataTablesModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

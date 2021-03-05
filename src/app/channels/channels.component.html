@@ -1,24 +1,47 @@
-<mat-paginator *ngIf="channel_data" style="background-color: transparent;" [length]="channel_data.video_count"
+<mat-tab-group (focusChange)="tabChanged($event)" animationDuration="0ms">
+    <mat-tab label="Date">
+        <mat-paginator *ngIf="channel_data" style="background-color: transparent;" [length]="channel_data.video_count"
               [pageSize]="50"
               [pageSizeOptions]="[25, 50, 100]"
               (page)="onPageChange($event)">
-</mat-paginator>
+        </mat-paginator>
 
-<mat-spinner class="loading-indicator" *ngIf="videos.length === 0"></mat-spinner>
+        <mat-spinner class="loading-indicator" *ngIf="videos.length === 0"></mat-spinner>
 
-<mat-grid-list *ngIf="videos.length > 0" [cols]="breakpoint" (window:resize)="onResize($event)" rowHeight="280px">
-    <mat-grid-tile *ngFor="let video of videos">
-        <a routerLink="/video/{{ video.id }}">
-            <mat-card style="text-align: center; width: 320px;">
-                <div class="container">
-                    <img width="300px" [defaultImage]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAAC0CAMAAADSOgUjAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABsUExURVNTXy8vNzMzPDY2Pjg4QT09RT09RkFBS0RETUZGT0pKVUtLVFNTX1lZY2BgamJibWZmcmdncWdncm5ueXBwe3V1gHl5hYODjoODj4WFkYeHk4qKloyMmIyMmZCQnZGRnZGRnpWVopiYpJ+frIgIOh0AAAABdFJOU/4a4wd9AAABvElEQVR42u3bzU7CQBSAUZAWVEBFRKuICPf939ENZQORaS6JP5xvfzcnk8x00ulNlKnXYwAQIECAAggQIEABBAgQoAACBAhQAAECBCiAAAECFECAAAEKIECAAAUQIECAAggQIEABBAgQIEABBAgQoAACBAjwZ1rFrucOQw/tUAAECBAgQIAAAQIEeFGAVdtrS7FZlfcBsN/WRCqAAAECBAgwIjbvJ3trdi0BHgIWnANH7dAYIMCzAz6NTlYB/AZw1i8PIECAAP8/4LQGmAKcxSPAHGCsa4ApwDi+CAGWA0ZTA0wBxnoKMAUYsagBpgAPFiHAjoCxvQaYAXwZWoEJwO2dTSQDuBzahTOAcwfpDOB67EskAzgf+BZOAB5ffgBLAccD94EpQDfSAAECBAgQIMA/Abj97BBAf6gCBAgQIMAzAjaz8hYAnQMBAgQIECBAgAAvHHDRvmW9r0521Q7d7F/AArztMLR/rVlNfkEAAQIECBAgQIAAAQogQIAABRAgQIACCBAgQAEECBCgAAIECFAAAQIEKIAAAQIUQIAAAQogQIAAAQogQIAABRAgQIACCBAgQAEECBCgigC/AIFwxj8l08Q9AAAAAElFTkSuQmCC'" [lazyLoad]="'https://twitcharchives.com' + video.thumbnail_url">
-                    <div class="time">{{ video.length | time}}</div>
-                </div>
-                <mat-card-content>
-                    [{{ video.created * 1000 | date:'M/d/yy' }}] - {{ video.title }}
-                </mat-card-content>
-                
-            </mat-card>
-        </a>
-    </mat-grid-tile>
-</mat-grid-list>
+        <mat-grid-list *ngIf="videos.length > 0" [cols]="breakpoint" (window:resize)="onResize($event)" rowHeight="280px">
+            <mat-grid-tile *ngFor="let video of videos">
+                <a routerLink="/video/{{ video.id }}">
+                    <mat-card style="text-align: center; width: 320px;">
+                        <div class="container">
+                            <img width="300px" [defaultImage]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAAC0CAMAAADSOgUjAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABsUExURVNTXy8vNzMzPDY2Pjg4QT09RT09RkFBS0RETUZGT0pKVUtLVFNTX1lZY2BgamJibWZmcmdncWdncm5ueXBwe3V1gHl5hYODjoODj4WFkYeHk4qKloyMmIyMmZCQnZGRnZGRnpWVopiYpJ+frIgIOh0AAAABdFJOU/4a4wd9AAABvElEQVR42u3bzU7CQBSAUZAWVEBFRKuICPf939ENZQORaS6JP5xvfzcnk8x00ulNlKnXYwAQIECAAggQIEABBAgQoAACBAhQAAECBCiAAAECFECAAAEKIECAAAUQIECAAggQIEABBAgQIEABBAgQoAACBAjwZ1rFrucOQw/tUAAECBAgQIAAAQIEeFGAVdtrS7FZlfcBsN/WRCqAAAECBAgwIjbvJ3trdi0BHgIWnANH7dAYIMCzAz6NTlYB/AZw1i8PIECAAP8/4LQGmAKcxSPAHGCsa4ApwDi+CAGWA0ZTA0wBxnoKMAUYsagBpgAPFiHAjoCxvQaYAXwZWoEJwO2dTSQDuBzahTOAcwfpDOB67EskAzgf+BZOAB5ffgBLAccD94EpQDfSAAECBAgQIMA/Abj97BBAf6gCBAgQIMAzAjaz8hYAnQMBAgQIECBAgAAvHHDRvmW9r0521Q7d7F/AArztMLR/rVlNfkEAAQIECBAgQIAAAQogQIAABRAgQIACCBAgQAEECBCgAAIECFAAAQIEKIAAAQIUQIAAAQogQIAAAQogQIAABRAgQIACCBAgQAEECBCgigC/AIFwxj8l08Q9AAAAAElFTkSuQmCC'" [lazyLoad]="'https://twitcharchives.com' + video.thumbnailUrl">
+                            <div class="time">{{ video.length | time}}</div>
+                        </div>
+                        <mat-card-content>
+                            [{{ video.created * 1000 | date:'M/d/yy' }}] - {{ video.title }}
+                        </mat-card-content>
+                        
+                    </mat-card>
+                </a>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-tab>
+    <mat-tab label="Game">
+        <mat-spinner class="loading-indicator" *ngIf="games.length === 0"></mat-spinner>
+
+        <mat-grid-list *ngIf="games.length > 0" [cols]="breakpoint_game" (window:resize)="onResize($event)" rowHeight="280px">
+            <mat-grid-tile *ngFor="let game of games">
+                <a routerLink="/channel/{{channel_data.name}}/game/{{ game }}">
+                    <mat-card style="text-align: center; width: 200px;">
+                        <div class="container">
+                            <img [defaultImage]="' data:image/jpeg;base64,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'" [lazyLoad]="'https://static-cdn.jtvnw.net/ttv-boxart/' + game.replace('?', '') + '-144x192.jpg'">
+                        </div>
+                        <mat-card-content>
+                            {{ game }}
+                        </mat-card-content>
+                        
+                    </mat-card>
+                </a>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-tab>
+</mat-tab-group>

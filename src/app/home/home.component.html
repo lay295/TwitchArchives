@@ -4,7 +4,7 @@
     <mat-grid-tile class="test" *ngFor="let channel of channels">
         <a routerLink="/channel/{{ channel.name }}">
             <figure>
-                <img style="height: 180px; width: 180px;" src="{{ channel.avatar_url }}" />
+                <img style="height: 180px; width: 180px;" src="{{ channel.avatarUrl }}" />
                 <figcaption style="text-align:center"> {{ channel.name }} </figcaption>
             </figure>
         </a>

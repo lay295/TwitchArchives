@@ -1,0 +1,26 @@
+<mat-paginator *ngIf="channel_data" style="background-color: transparent;" [length]="videos.length"
+              [pageSize]="50"
+              [pageSizeOptions]="[25, 50, 100]"
+              (page)="onPageChange($event)">
+</mat-paginator>
+
+<mat-spinner class="loading-indicator" *ngIf="videos.length === 0"></mat-spinner>
+
+<mat-grid-list *ngIf="videos.length > 0" [cols]="breakpoint" (window:resize)="onResize($event)" rowHeight="280px">
+    <mat-grid-tile *ngFor="let video of videos">
+        <a routerLink="/video/{{ video.id }}">
+            <mat-card style="text-align: center; width: 320px;">
+                <div class="container">
+                    <img width="300px"
+                        [defaultImage]="'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAAC0CAMAAADSOgUjAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABsUExURVNTXy8vNzMzPDY2Pjg4QT09RT09RkFBS0RETUZGT0pKVUtLVFNTX1lZY2BgamJibWZmcmdncWdncm5ueXBwe3V1gHl5hYODjoODj4WFkYeHk4qKloyMmIyMmZCQnZGRnZGRnpWVopiYpJ+frIgIOh0AAAABdFJOU/4a4wd9AAABvElEQVR42u3bzU7CQBSAUZAWVEBFRKuICPf939ENZQORaS6JP5xvfzcnk8x00ulNlKnXYwAQIECAAggQIEABBAgQoAACBAhQAAECBCiAAAECFECAAAEKIECAAAUQIECAAggQIEABBAgQIEABBAgQoAACBAjwZ1rFrucOQw/tUAAECBAgQIAAAQIEeFGAVdtrS7FZlfcBsN/WRCqAAAECBAgwIjbvJ3trdi0BHgIWnANH7dAYIMCzAz6NTlYB/AZw1i8PIECAAP8/4LQGmAKcxSPAHGCsa4ApwDi+CAGWA0ZTA0wBxnoKMAUYsagBpgAPFiHAjoCxvQaYAXwZWoEJwO2dTSQDuBzahTOAcwfpDOB67EskAzgf+BZOAB5ffgBLAccD94EpQDfSAAECBAgQIMA/Abj97BBAf6gCBAgQIMAzAjaz8hYAnQMBAgQIECBAgAAvHHDRvmW9r0521Q7d7F/AArztMLR/rVlNfkEAAQIECBAgQIAAAQogQIAABRAgQIACCBAgQAEECBCgAAIECFAAAQIEKIAAAQIUQIAAAQogQIAAAQogQIAABRAgQIACCBAgQAEECBCgigC/AIFwxj8l08Q9AAAAAElFTkSuQmCC'"
+                        [lazyLoad]="'https://twitcharchives.com' + video.thumbnailUrl">
+                    <div class="time">{{ video.length | time}}</div>
+                </div>
+                <mat-card-content>
+                    [{{ video.created * 1000 | date:'M/d/yy' }}] - {{ video.title }}
+                </mat-card-content>
+
+            </mat-card>
+        </a>
+    </mat-grid-tile>
+</mat-grid-list>

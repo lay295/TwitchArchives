@@ -34,11 +34,11 @@ export class VideosComponent implements OnInit {
     this.dataService.getVideoById(this.video_id).subscribe((data: any[]) => {
       this.video_data = data[0];
       this.selected_option = 1;
-      if (this.video_data.video_youtube_id != null)
-        this.video_list = this.video_data.video_youtube_id.split(",");
+      if (this.video_data.videoYoutubeId != null)
+        this.video_list = this.video_data.videoYoutubeId.split(",");
       console.log(this.video_list);
-      if (this.video_data.chat_youtube_id != null)
-        this.chat_list = this.video_data.chat_youtube_id.split(",");
+      if (this.video_data.chatYoutubeId != null)
+        this.chat_list = this.video_data.chatYoutubeId.split(",");
       console.log(this.chat_list);
       this.Url = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/" + this.video_list[0] + "?enablejsapi=1&rel=0");
       this.ChatUrl = this.sanitizer.bypassSecurityTrustResourceUrl("https://www.youtube.com/embed/" + this.chat_list[0] + "?enablejsapi=1&rel=0");
@@ -46,7 +46,7 @@ export class VideosComponent implements OnInit {
         console.log(data);
         console.log(this.video_data);
         data.forEach(currentChannel => {
-          if (currentChannel.name.toLowerCase() === this.video_data.channel_name.toLowerCase()) {
+          if (currentChannel.name.toLowerCase() === this.video_data.channelName.toLowerCase()) {
             this.channel_data = currentChannel;
           }
         });
@@ -81,14 +81,14 @@ export class VideosComponent implements OnInit {
     this.YT = window['YT'];
 
     this.player_video = new window['YT'].Player('yt_video', {
-      videoId: this.video_data.video_youtube_id,
+      videoId: this.video_data.videoYoutubeId,
       events: {
         'onStateChange': this.onPlayerStateChange.bind(this)
       }
     });
 
     this.player_chat = new window['YT'].Player('yt_chat', {
-      videoId: this.video_data.video_youtube_id,
+      videoId: this.video_data.chatYoutubeId,
       events: {
         'onStateChange': this.onPlayerStateChangeChat.bind(this)
       }

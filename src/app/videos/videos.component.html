@@ -18,9 +18,9 @@
         colspan="4"
         rowspan="1">
         <div *ngIf="channel_data">
-            <a routerLink="/channel/{{channel_data.name}}"><img class="avatar" src="{{channel_data.avatar_url}}"></a>
+            <a routerLink="/channel/{{channel_data.name}}"><img class="avatar" src="{{channel_data.avatarUrl}}"></a>
             <p class="channel_text" style="font-size: large;">{{ video_data.title }}<br>
-                <a href="https://drive.twitcharchives.com/{{channel_data.download_index}}:down/{{video_data.id}}/final.mp4" target="_blank">
+                <a href="https://drive.twitcharchives.com/{{channel_data.downloadIndex}}:down/{{video_data.id}}/final.mp4" target="_blank">
                     <button mat-icon-button>
                         <mat-icon>cloud_download</mat-icon>
                         Download
