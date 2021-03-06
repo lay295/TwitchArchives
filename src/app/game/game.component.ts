@@ -33,6 +33,8 @@ export class GameComponent implements OnInit {
     this.dataService.getVideoByGame(this.channel_name, this.game_name, 50, 0).subscribe((data: any[]) => {
       this.videos = data;
     });
+
+    this.setBreakpoint();
   }
 
   onPageChange(event) {

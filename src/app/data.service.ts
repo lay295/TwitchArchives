@@ -23,7 +23,7 @@ export class DataService {
   }
 
   public getVideoByGame(channelName: string, gameName: string, limit: number, offset: number) {
-    return this.httpClient.get(this.REST_API_SERVER + "/videos?channel_name=" + channelName + "&game=" + gameName + "&offset=" + offset + "&limit=" + limit);
+    return this.httpClient.get(this.REST_API_SERVER + "/videos?channel_name=" + channelName + "&game=" + encodeURIComponent(gameName) + "&offset=" + offset + "&limit=" + limit);
   }
 
   public getGameList(channelName: string) {
