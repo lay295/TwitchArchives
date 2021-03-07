@@ -8,7 +8,7 @@
 
 <mat-grid-list *ngIf="videos.length > 0" [cols]="breakpoint" (window:resize)="onResize($event)" rowHeight="280px">
     <mat-grid-tile *ngFor="let video of videos">
-        <a routerLink="/video/{{ video.id }}">
+        <a routerLink="/video/{{ video.idString }}">
             <mat-card style="text-align: center; width: 320px;">
                 <div class="container">
                     <img width="300px"
