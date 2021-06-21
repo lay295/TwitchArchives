@@ -1,0 +1,17 @@
+<mat-card class="form-card">
+    <h1 style="text-align: center;">Downloads</h1>
+    <div class="container">
+        <mat-list>
+            <div mat-subheader>Folders</div>
+
+            <a routerLink="/downloads/files/{{ folder.folderName }}" *ngFor="let folder of folders">
+                <mat-list-item class="list">
+                    <mat-icon mat-list-icon>folder</mat-icon>
+                    <div mat-line>{{folder.folderName}}</div>
+                    <div mat-line> {{folder.createdAt * 1000 | date}} </div>
+                </mat-list-item>
+            </a>
+
+        </mat-list>
+    </div>
+</mat-card>

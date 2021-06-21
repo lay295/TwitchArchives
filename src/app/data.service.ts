@@ -37,4 +37,12 @@ export class DataService {
   public sendEmail(form_name: string, form_email: string, form_message: string) {
     return this.httpClient.post("https://twitcharchives.com/api/contact.php", JSON.stringify({name: form_name, email: form_email, message: form_message}));
   }
+
+  public getDownloadFolders(channelName: string) {
+    return this.httpClient.get(this.REST_API_SERVER + "/downloads/folders?channel=" + channelName);
+  }
+
+  public getDownloadFiles(id: number) {
+    return this.httpClient.get(this.REST_API_SERVER + "/downloads/files?videoid=" + id);
+  }
 }

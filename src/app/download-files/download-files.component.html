@@ -1,0 +1,17 @@
+<mat-card class="form-card">
+    <h1 style="text-align: center;">Downloads</h1>
+    <div class="container">
+        <mat-list *ngFor="let file of files">
+            <div mat-subheader>{{file.fileName}}</div>
+
+            <a href="{{provider.link}}" target="_blank" download *ngFor="let provider of file.providerList" >
+                <mat-list-item class="list">
+                    <mat-icon mat-list-icon>folder</mat-icon>
+                    <div mat-line *ngIf="provider.provider == 'B2'">Blackblaze {{provider.provider}} (Right-Click Save As)</div>
+                    <div mat-line *ngIf="provider.provider != 'B2'">{{provider.provider}}</div>
+                    <div mat-line *ngIf="provider.provider != 'GoogleDrive'">Expires: {{provider.expires | date}} </div>
+                </mat-list-item>
+            </a>
+        </mat-list>
+    </div>
+</mat-card>

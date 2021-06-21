@@ -1,0 +1,16 @@
+<mat-card class="form-card">
+    <h1 style="text-align: center;">Downloads</h1>
+    <div class="container">
+        <mat-list>
+            <div mat-subheader>Channels</div>
+
+            <a routerLink="/downloads/folders/{{ channel.name }}" *ngFor="let channel of channels">
+                <mat-list-item class="list">
+                    <mat-icon mat-list-icon>folder</mat-icon>
+                    <div mat-line>{{channel.name}}</div>
+                </mat-list-item>
+            </a>
+
+        </mat-list>
+    </div>
+</mat-card>

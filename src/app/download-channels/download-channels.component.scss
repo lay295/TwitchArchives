@@ -1,0 +1,19 @@
+.form-card {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.mat-list-base .mat-list-item.mat-list-item-with-avatar, .mat-list-base .mat-list-option.mat-list-item-with-avatar {
+    height: 48px;
+}
+
+.list:hover {
+    font-weight: bold;
+    background-color: #5c5c5c;
+}
+
+a {
+    text-decoration: none !important;
+}

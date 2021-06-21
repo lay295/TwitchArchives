@@ -36,6 +36,9 @@ import { VideosComponent } from './videos/videos.component';
 import { SafePipe } from './safe.pipe';
 import { DeletedVodsComponent } from './deleted-vods/deleted-vods.component';
 import { GameComponent } from './game/game.component';
+import { DownloadChannelsComponent } from './download-channels/download-channels.component';
+import { DownloadFoldersComponent } from './download-folders/download-folders.component';
+import { DownloadFilesComponent } from './download-files/download-files.component';
 
 
 @NgModule({
@@ -51,7 +54,10 @@ import { GameComponent } from './game/game.component';
     VideosComponent,
     SafePipe,
     DeletedVodsComponent,
-    GameComponent
+    GameComponent,
+    DownloadChannelsComponent,
+    DownloadFoldersComponent,
+    DownloadFilesComponent
   ],
   imports: [
     BrowserModule,
